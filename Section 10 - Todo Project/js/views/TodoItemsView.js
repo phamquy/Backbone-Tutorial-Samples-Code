@@ -2,8 +2,7 @@
  * Created by jack on 8/17/15.
  */
 var TodoItemsView = Backbone.View.extend({
-    tagName: "ul",
-    id: "todoItems",
+
 
     initialize: function (options) {
         if (!(options && options.model)) {
@@ -20,7 +19,7 @@ var TodoItemsView = Backbone.View.extend({
 
     onAddTodoItem : function(todoItem){
         var view = new TodoItemView({model: todoItem});
-        this.$el.append(view.render().$el);
+        this.$("#todoItems").append(view.render().$el);
     },
 
     events : {
@@ -47,13 +46,13 @@ var TodoItemsView = Backbone.View.extend({
     },
 
     render: function () {
-        var self = this;
-        this.$el.append("<input type='text' autofocus id='newTodoItem'/>");
-        this.$el.append("<button id='add'>Add</button>");
-        this.model.each(function (todoItem) {
-            var view = new TodoItemView({model: todoItem});
-            self.$el.append(view.render().$el);
-        });
+
+        //this.$el.append("<input type='text' autofocus id='newTodoItem'/>");
+        //this.$el.append("<button id='add'>Add</button>");
+        //this.$el.append("<ul id='todoItems'></ul>");
+        var template = $("#todoItemsTemplate").html();
+        var html = Mustache.render(template);
+        this.$el.html(html)
         return this;
     }
 });
