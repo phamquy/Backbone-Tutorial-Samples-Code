@@ -6,7 +6,7 @@ var TodoItem = Backbone.Model.extend({
         isCompleted : false
     },
 
-    url : "http://jsonplaceholder.typicode.com/todos",
+    urlRoot : "http://jsonplaceholder.typicode.com/todos",
     validate : function(attrs){
         if(!attrs.title) {
             return "Description is required";
